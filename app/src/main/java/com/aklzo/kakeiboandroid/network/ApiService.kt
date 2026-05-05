@@ -1,6 +1,7 @@
 package com.aklzo.kakeiboandroid.network
 
 import com.aklzo.kakeiboandroid.network.model.CreateTransactionRequest
+import com.aklzo.kakeiboandroid.network.model.ProgressResponse
 import com.aklzo.kakeiboandroid.network.model.SummaryResponse
 import com.aklzo.kakeiboandroid.network.model.TransactionResponse
 import com.aklzo.kakeiboandroid.network.model.TransactionsListResponse
@@ -49,4 +50,12 @@ interface ApiService {
         @Query("month") month: String?,
         @Query("by_category") byCategory: Boolean = true
     ): Response<SummaryResponse>
+
+    @GET("progress")
+    suspend fun getProgress(
+        @Header("Authorization") authorization: String,
+        @Query("month") month: String?,
+        @Query("mode") mode: String,
+        @Query("scope") scope: String = "both"
+    ): Response<ProgressResponse>
 }

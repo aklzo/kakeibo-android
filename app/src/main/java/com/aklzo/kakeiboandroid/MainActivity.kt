@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.Add
@@ -24,10 +22,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.aklzo.kakeiboandroid.auth.AuthManager
 import com.aklzo.kakeiboandroid.auth.SignInScreen
+import com.aklzo.kakeiboandroid.progress.ProgressScreen
 import com.aklzo.kakeiboandroid.summary.SummaryScreen
 import com.aklzo.kakeiboandroid.transactions.AddTransactionScreen
 import com.aklzo.kakeiboandroid.transactions.TransactionListScreen
@@ -89,14 +87,7 @@ class MainActivity : ComponentActivity() {
                             Screen.Add -> AddTransactionScreen(innerPadding, snackbarHostState)
                             Screen.List -> TransactionListScreen(innerPadding)
                             Screen.Summary -> SummaryScreen(innerPadding)
-                            else -> Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(innerPadding),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text("${currentScreen.label}画面（未実装）")
-                            }
+                            Screen.Budget -> ProgressScreen(innerPadding)
                         }
                     }
                 }
