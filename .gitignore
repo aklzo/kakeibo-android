@@ -1,0 +1,29 @@
+# Android Studio 生成ファイル
+*.iml
+.gradle/
+.idea/
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+
+# ビルド成果物
+/build/
+app/build/
+
+# 署名ファイル
+*.jks
+*.keystore
+
+# 機密情報ファイル（最重要）
+app/google-services.json
+local.properties
+secrets.properties
+*.env
+
+# macOS
+.DS_Store
+
+# その他
+captures/
+.externalNativeBuild/
+.cxx/
