@@ -52,7 +52,7 @@ private val ColorWarning = Color(0xFFF57C00)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProgressScreen(innerPadding: PaddingValues) {
+fun ProgressScreen(innerPadding: PaddingValues = PaddingValues(0.dp)) {
     var selectedMonth by remember { mutableStateOf(YearMonth.now()) }
     var mode by remember { mutableStateOf(MODE_BUDGET) }
     var progressData by remember { mutableStateOf<ProgressData?>(null) }

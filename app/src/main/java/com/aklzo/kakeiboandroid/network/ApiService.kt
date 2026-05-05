@@ -1,5 +1,8 @@
 package com.aklzo.kakeiboandroid.network
 
+import com.aklzo.kakeiboandroid.network.model.BudgetItemResponse
+import com.aklzo.kakeiboandroid.network.model.BudgetsResponse
+import com.aklzo.kakeiboandroid.network.model.CreateBudgetRequest
 import com.aklzo.kakeiboandroid.network.model.CreateTransactionRequest
 import com.aklzo.kakeiboandroid.network.model.ProgressResponse
 import com.aklzo.kakeiboandroid.network.model.SummaryResponse
@@ -58,4 +61,15 @@ interface ApiService {
         @Query("mode") mode: String,
         @Query("scope") scope: String = "both"
     ): Response<ProgressResponse>
+
+    @GET("budgets")
+    suspend fun getBudgets(
+        @Header("Authorization") authorization: String
+    ): Response<BudgetsResponse>
+
+    @POST("budgets")
+    suspend fun createBudget(
+        @Header("Authorization") authorization: String,
+        @Body request: CreateBudgetRequest
+    ): Response<BudgetItemResponse>
 }

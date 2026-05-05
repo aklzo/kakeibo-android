@@ -25,7 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.aklzo.kakeiboandroid.auth.AuthManager
 import com.aklzo.kakeiboandroid.auth.SignInScreen
-import com.aklzo.kakeiboandroid.progress.ProgressScreen
+import com.aklzo.kakeiboandroid.budget.BudgetTabScreen
 import com.aklzo.kakeiboandroid.summary.SummaryScreen
 import com.aklzo.kakeiboandroid.transactions.AddTransactionScreen
 import com.aklzo.kakeiboandroid.transactions.TransactionListScreen
@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
                             Screen.Add -> AddTransactionScreen(innerPadding, snackbarHostState)
                             Screen.List -> TransactionListScreen(innerPadding)
                             Screen.Summary -> SummaryScreen(innerPadding)
-                            Screen.Budget -> ProgressScreen(innerPadding)
+                            Screen.Budget -> BudgetTabScreen(innerPadding, snackbarHostState)
                         }
                     }
                 }
