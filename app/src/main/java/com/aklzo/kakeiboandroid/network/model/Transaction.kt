@@ -21,3 +21,10 @@ data class TransactionData(
 )
 
 data class TransactionResponse(val data: TransactionData)
+
+data class TransactionsListData(
+    val transactions: List<TransactionData>,
+    val total: Int
+)
+
+data class TransactionsListResponse(val data: TransactionsListData)

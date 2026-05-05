@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import com.aklzo.kakeiboandroid.auth.AuthManager
 import com.aklzo.kakeiboandroid.auth.SignInScreen
 import com.aklzo.kakeiboandroid.transactions.AddTransactionScreen
+import com.aklzo.kakeiboandroid.transactions.TransactionListScreen
 import com.aklzo.kakeiboandroid.ui.theme.KakeiboAndroidTheme
 
 private enum class Screen(val label: String) {
@@ -85,6 +86,7 @@ class MainActivity : ComponentActivity() {
                     ) { innerPadding ->
                         when (currentScreen) {
                             Screen.Add -> AddTransactionScreen(innerPadding, snackbarHostState)
+                            Screen.List -> TransactionListScreen(innerPadding)
                             else -> Box(
                                 modifier = Modifier
                                     .fillMaxSize()
