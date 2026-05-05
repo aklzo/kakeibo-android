@@ -3,6 +3,7 @@ package com.aklzo.kakeiboandroid.budget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,7 +40,10 @@ import com.aklzo.kakeiboandroid.transactions.CATEGORIES
 import kotlinx.coroutines.launch
 
 @Composable
-fun BudgetSettingScreen(snackbarHostState: SnackbarHostState) {
+fun BudgetSettingScreen(
+    snackbarHostState: SnackbarHostState,
+    innerPadding: PaddingValues = PaddingValues(0.dp)
+) {
     val scope = rememberCoroutineScope()
     val amounts = remember { mutableStateMapOf<String?, String>() }
     var isSaving by remember { mutableStateOf(false) }
@@ -100,7 +104,10 @@ fun BudgetSettingScreen(snackbarHostState: SnackbarHostState) {
     LaunchedEffect(Unit) { load() }
 
     if (isLoading) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(
+            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            contentAlignment = Alignment.Center
+        ) {
             CircularProgressIndicator()
         }
         return
@@ -109,6 +116,7 @@ fun BudgetSettingScreen(snackbarHostState: SnackbarHostState) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(innerPadding)
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
     ) {

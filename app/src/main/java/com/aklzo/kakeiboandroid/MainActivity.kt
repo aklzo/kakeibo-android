@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.AccountBalance
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.filled.TrendingUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -25,7 +26,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.aklzo.kakeiboandroid.auth.AuthManager
 import com.aklzo.kakeiboandroid.auth.SignInScreen
-import com.aklzo.kakeiboandroid.budget.BudgetTabScreen
+import com.aklzo.kakeiboandroid.budget.BudgetSettingScreen
+import com.aklzo.kakeiboandroid.progress.ProgressScreen
 import com.aklzo.kakeiboandroid.summary.SummaryScreen
 import com.aklzo.kakeiboandroid.transactions.AddTransactionScreen
 import com.aklzo.kakeiboandroid.transactions.TransactionListScreen
@@ -35,6 +37,7 @@ private enum class Screen(val label: String) {
     Add("追加"),
     List("一覧"),
     Summary("集計"),
+    Progress("進捗"),
     Budget("予算")
 }
 
@@ -75,6 +78,12 @@ class MainActivity : ComponentActivity() {
                                     label = { Text(Screen.Summary.label) }
                                 )
                                 NavigationBarItem(
+                                    selected = currentScreen == Screen.Progress,
+                                    onClick = { currentScreen = Screen.Progress },
+                                    icon = { Icon(Icons.AutoMirrored.Filled.TrendingUp, contentDescription = null) },
+                                    label = { Text(Screen.Progress.label) }
+                                )
+                                NavigationBarItem(
                                     selected = currentScreen == Screen.Budget,
                                     onClick = { currentScreen = Screen.Budget },
                                     icon = { Icon(Icons.Default.AccountBalance, contentDescription = null) },
@@ -87,7 +96,8 @@ class MainActivity : ComponentActivity() {
                             Screen.Add -> AddTransactionScreen(innerPadding, snackbarHostState)
                             Screen.List -> TransactionListScreen(innerPadding)
                             Screen.Summary -> SummaryScreen(innerPadding)
-                            Screen.Budget -> BudgetTabScreen(innerPadding, snackbarHostState)
+                            Screen.Progress -> ProgressScreen(innerPadding)
+                            Screen.Budget -> BudgetSettingScreen(snackbarHostState, innerPadding)
                         }
                     }
                 }
