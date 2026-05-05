@@ -1,6 +1,7 @@
 package com.aklzo.kakeiboandroid.network
 
 import com.aklzo.kakeiboandroid.network.model.CreateTransactionRequest
+import com.aklzo.kakeiboandroid.network.model.SummaryResponse
 import com.aklzo.kakeiboandroid.network.model.TransactionResponse
 import com.aklzo.kakeiboandroid.network.model.TransactionsListResponse
 import com.aklzo.kakeiboandroid.network.model.UpdateTransactionRequest
@@ -41,4 +42,11 @@ interface ApiService {
         @Header("Authorization") authorization: String,
         @Path("id") id: Int
     ): Response<Unit>
+
+    @GET("summary")
+    suspend fun getSummary(
+        @Header("Authorization") authorization: String,
+        @Query("month") month: String?,
+        @Query("by_category") byCategory: Boolean = true
+    ): Response<SummaryResponse>
 }

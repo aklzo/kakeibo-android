@@ -28,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.aklzo.kakeiboandroid.auth.AuthManager
 import com.aklzo.kakeiboandroid.auth.SignInScreen
+import com.aklzo.kakeiboandroid.summary.SummaryScreen
 import com.aklzo.kakeiboandroid.transactions.AddTransactionScreen
 import com.aklzo.kakeiboandroid.transactions.TransactionListScreen
 import com.aklzo.kakeiboandroid.ui.theme.KakeiboAndroidTheme
@@ -87,6 +88,7 @@ class MainActivity : ComponentActivity() {
                         when (currentScreen) {
                             Screen.Add -> AddTransactionScreen(innerPadding, snackbarHostState)
                             Screen.List -> TransactionListScreen(innerPadding)
+                            Screen.Summary -> SummaryScreen(innerPadding)
                             else -> Box(
                                 modifier = Modifier
                                     .fillMaxSize()
