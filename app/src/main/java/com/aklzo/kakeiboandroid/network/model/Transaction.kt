@@ -10,6 +10,14 @@ data class CreateTransactionRequest(
     val memo: String?
 )
 
+data class UpdateTransactionRequest(
+    val name: String,
+    val amount: Int,
+    val date: String,
+    val category: String,
+    val memo: String?
+)
+
 data class TransactionData(
     val id: Int,
     val name: String,
